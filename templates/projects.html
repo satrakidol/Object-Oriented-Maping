@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block main %}
+
+<h4> Projects of {{department.dname}}'s Department </h4>
+<table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Location</th>
+               <th>Number</th>
+            </tr>
+         </thead>
+          <tbody>
+            {% for p in pro %}
+            <tr>
+                <td>{{p.pname}} </td>
+                <td>{{p.plocation}} </td>
+                <td>{{p.pnumber}} </td>
+            <td>
+               <form action="/list-of-projects/delete/{{p.pnumber}}" method="POST">
+                <input class="btn btn-danger btn-sm" type="submit" value="delete">
+               </form>
+           </td>
+          </tr>
+            {% endfor %}
+{% endblock %}

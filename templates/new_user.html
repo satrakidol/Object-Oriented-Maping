@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block main %}
+<form action="{{ request.path }}" method="post">
+   <label for="name">Username</label><br>
+   <input type="text" name="username" placeholder="Username" /><br>
+   <label for="email">Email</label><br>
+   <input type="email" name="email" placeholder="email" /><br>
+   <input type="submit" value="Submit" />
+</form>
+{% endblock %}

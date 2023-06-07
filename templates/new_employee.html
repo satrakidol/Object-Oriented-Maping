@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block main %}
+<p> Adding employee for department of <b>{{department.dname}} </b></p>
+<form action="{{ request.path }}" method="post">
+   <label for="name">First Name</label><br>
+   <input type="text" name="fname" placeholder="First Name" /><br>
+   <label for="name">Last Name</label><br>
+   <input type="text" name="lname" placeholder="Last Name" /><br>
+   <label for="name">SSN</label><br>
+   <input type="number" name="ssn" placeholder="ssn" /><br>
+   <label for="name">Salary</label><br>
+   <input type="number" name="salary" placeholder="Salary" /><br>
+
+   <input type="submit" value="Submit" />
+</form>
+{% endblock %}

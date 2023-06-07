@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block main %}
+<p> Adding project for department of <b>{{department.dname}} </b></p>
+<form action="{{ request.path }}" method="post">
+   <label for="name">Project's Name</label><br>
+   <input type="text" name="pname" placeholder="Project's Name" /><br>
+   <label for="name">Project's Location</label><br>
+
+   <select name="plocation">
+      {% for loc in Location %}
+          <option value="{{ Location(loc).name}}">{{ Location(loc).name }}</option>
+      {% endfor %}
+     
+   </select>
+   <br>
+
+   <label for="name">Project's Number</label><br>
+
+
+   <input type="number" name="pnumber" placeholder="Project's Number" /><br>
+
+   <input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block main %}
+<table>
+         <thead>
+            <tr>
+               <th>Department</th>
+               <th>Number</th>
+               <th>Employees</th>
+               <th>Projects</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for department in departments %}
+               <tr>
+                  <td>{{ department.dname }}</td>
+                  <td>{{ department.dnumber }}</td>
+                  <td><a href = "{{ url_for('save_employee', dnumber=department.dnumber) }}">Add Employee</a>
+                     | <a href = "{{ url_for('list_employees', dnumber=department.dnumber) }}">List Employees</a></td>
+                  <td><a href = "{{ url_for('save_project', dnumber=department.dnumber) }}">Add Project</a>
+                     | <a href = "{{ url_for('list_projects', dnumber=department.dnumber) }}">List Projects</a></td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+{% endblock %}

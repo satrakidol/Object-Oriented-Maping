@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block main %}
+
+<h4>Employees in Department of {{department.dname}}</h4>
+<table>
+         <thead>
+            <tr>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>SSN</th>
+               <th>Salary</th>
+               <th>Action</th>
+            </tr>
+         </thead>
+          <tbody>
+            {% for e in emps %}
+             <tr>
+               <td>{{e.fname}} </td>
+               <td>{{e.lname}} </td>
+               <td>{{e.ssn}} </td>
+               <td>{{e.salary}} </td>
+               <td>
+                  <form action="/list-of-employees/delete/{{e.ssn}}" method="POST">
+                   <input class="btn btn-danger btn-sm" type="submit" value="delete">
+                  </form>
+              </td>
+             </tr>
+            {% endfor %}
+{% endblock %}
