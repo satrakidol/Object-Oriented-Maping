@@ -11,8 +11,6 @@ class Base(DeclarativeBase):
     pass
 
 
-
-
 class Department(Base):
     __tablename__ = 'departments'
     dname: Mapped[str] = mapped_column(String(20), unique=True,nullable=False)
@@ -32,8 +30,7 @@ class Employees(Base):
     salary: Mapped[int] = mapped_column(Integer)
     dno: Mapped[int] = mapped_column(ForeignKey("departments.dnumber"))
     deps: Mapped["Department"] = relationship(back_populates="emps")
-    # pno: Mapped[int] = mapped_column(ForeignKey("projects.pnumber"))
-    # pros: Mapped["Project"] = relationship(back_populates="empl")
+
 
     def __str__(self):
         return 'name'+' '+ self.fname+' ' + self.lname+' '+ 'ssn'+' ' + str(self.ssn)+' ' +'salary'+' '+str(self.salary)
