@@ -38,7 +38,6 @@ def newdepartment():
             if (name != None) or (number != None):
                 flash('The name and the number must be unique', 'error')
             else:
-
                 department = Department(
                     dname=request.form['dname'], dnumber=request.form['dnumber'])
                 db_session.add(department)
@@ -59,6 +58,8 @@ def del_employee(ssn):
     dnumber=employee.dno
     db_session.delete(employee)
     db_session.commit()
+    message = f"Employee {employee.fname} {employee.lname} with SSN:{employee.ssn} has been deleted"
+    flash(message)
     return redirect(url_for('list_employees',dnumber=dnumber))
  
 
@@ -82,7 +83,10 @@ def save_employee(dnumber):
             db_session.add(employee)
             db_session.commit()
             flash('Record was successfully added')
-    return redirect(url_for('show_all'))
+            return redirect(url_for('list_employees',dnumber=dnumber))
+    
+    return render_template('new_employee.html', department=Department.query.get(dnumber))
+    
 
 
 @app.route('/list-of-projects/<dnumber>', methods=['GET'])
